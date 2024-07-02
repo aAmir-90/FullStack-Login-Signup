@@ -50,11 +50,13 @@ export const loginController = async (req, res) => {
       });
     }
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "8h",
+      expiresIn: "7d",
     });
+    user.password = undefined;
     res.status(200).json({
       success: true,
       message: "User Login Successfully",
+      user,
       token,
     });
   } catch (error) {

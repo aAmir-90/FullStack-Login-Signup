@@ -13,6 +13,6 @@ router.post("/register", registerController);
 router.post("/login", loginController);
 router.get("/get-user", getUser);
 router.put("/update-user/:id", authMiddleware, updateData);
-router.delete("/delete-user/:id", deleteUser);
+router.delete("/delete-user/:id", authMiddleware, deleteUser);
 
 export default router;
